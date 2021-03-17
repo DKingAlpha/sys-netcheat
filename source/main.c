@@ -90,7 +90,6 @@ int attach()
     u32 numProc;
     svcGetProcessList(&numProc, pids, 300);
     u64 pid = pids[numProc - 1];
-
     Result rc = svcDebugActiveProcess(&debughandle, pid);
     if (R_FAILED(rc))
     {
@@ -568,7 +567,7 @@ int main()
     mutexInit(&actionLock);
 
     Thread freezeThread;
-    Result rc = threadCreate(&freezeThread, freezeLoop, NULL, 0x4000, 49, 3);
+    Result rc = threadCreate(&freezeThread, freezeLoop, NULL, NULL, 0x4000, 49, 3);
     if (R_FAILED(rc))
         fatalLater(rc);
     rc = threadStart(&freezeThread);

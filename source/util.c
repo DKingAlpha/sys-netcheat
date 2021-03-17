@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <switch.h>
 #include "util.h"
+#include "ipc.h"
 
 int setupServerSocket()
 {
